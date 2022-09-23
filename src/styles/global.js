@@ -9,6 +9,10 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
+  a {
+    color: inherit;
+  }
+
   html {
     -webkit-font-smoothing: antialiased;
 
@@ -22,41 +26,37 @@ export const GlobalStyle = createGlobalStyle`
     }
 
   :root {
-    // Colors
-    --clr-bg: #d5d5d5;
-    --clr-bg-alt: #373737;
-    --clr-bg-navbar: #fff;
-    --clr-bg-container: #fff;
-    --clr-txt: #1e1e1e;
-    --clr-txt-alt: #fff;
-    --clr-txt-light: #9099a2;
-    --clr-acc-primary: #6d7993;
-    --clr-acc-secondary: #96858f;
-    // Fonts
-    --font-serif: 'Source Serif Pro';
-  }
+    // Color
+    --gray-300: #d5d5d5;
+    --gray-500: #9099a2;
+    --gray-700: #373737;
+    --gray-900: #1e1e1e;
+    --slate-300: #717A8F;
+    --slate-500: #576176;
+    --slate-700: #4C5567;
+    --pink-300: #EAE7E9;
+    --pink-500: #96858f;
+    --pink-700: #695D64;
+    --white: #fff;
 
-  body {
-    background-color: var(--clr-bg);
-    color: var(--clr-txt);
-  }
+    // Font
+    --montserrat: 'Montserrat', sans-serif;
+    --poppins: 'Poppins', sans-serif;
+    --roboto: 'Roboto', sans-serif;
+    --sourceSerifPro: 'Source Serif Pro', serif;
 
-  button {
-    border: none;
-    background: none;
-    cursor: pointer;
-  }
+    // Border
+    --b-base: 0.25rem;
 
-  body, button, input, textarea {
-      font-family: 'Roboto', sans-serif;
-      font-weight: 400;
-  }
+    // Spacing
+    --xs: 0.5rem;
+    --sm: 0.75rem;
+    --base: 1rem;
+    --lg: 1.5rem;
+    --xl: 2rem;
 
-  h1, h2, h3, h4, h5, h6, strong {
-    font-weight: 500;
-  }
-
-  a {
-    color: inherit;
+    // Max-Width
+    --max-w-sm: 448px;
+    --max-w-base: 1152px;
   }
 `;

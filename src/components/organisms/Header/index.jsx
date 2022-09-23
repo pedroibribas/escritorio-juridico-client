@@ -1,34 +1,45 @@
 import { useState } from "react";
-import { MdLogout } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../helpers/providers/AuthProvider";
-import { Button, Hamburger, Overlay, Menu } from "../../../components";
-import { Container, Content, RightContainer } from "./styles";
+import { AiFillHome } from "react-icons/ai";
+import useOnClickOutsideRef from "../../../helpers/hooks/useOnClickOutsideRef";
+import { Anchor, Button, Transition } from "../../atoms";
+import { Menu } from "../../molecules";
+import { HeaderContent, HeaderContainer, MenuGroupContainer, MenuContainer } from "./styles";
 
 const Header = () => {
-  const { user, logoutUser } = useAuth();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navigate = useNavigate();
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
 
-  const handleClick = () => setIsMenuOpen(!isMenuOpen);
-  const handleLogout = () => {
-    logoutUser();
-    navigate("/login");
-    window.location.reload();
-  };
+  const buttonRef = useOnClickOutsideRef(() => setIsOpenMenu(false));
+
+  const handleOpenMenu = () => setIsOpenMenu(!isOpenMenu);
 
   return (
-    <Container>
-      <Content>
-        <Hamburger handler={handleClick} />
-        <RightContainer>
-          <Button action='button'>{user?.email}</Button>
-          <Button action='button' handler={handleLogout}>Sair <MdLogout /></Button>
-        </RightContainer>
-        <Menu isMenuOpen={isMenuOpen} />
-      </Content>
-      {isMenuOpen && <Overlay />}
-    </Container>
+    <HeaderContainer>
+      <HeaderContent>
+        <Anchor style='headerLink' path="/">
+          <AiFillHome />Início
+        </Anchor>
+        <MenuGroupContainer>
+          <Button
+            action='showMenu'
+            toggle={isOpenMenu}
+            handler={handleOpenMenu}
+            container={buttonRef}
+          >
+            pedroibribas@gmail.com
+          </Button>
+          <MenuContainer>
+            <Transition
+              property="heightTransition"
+              toggle={isOpenMenu}
+              size="150px"
+              overflowY="hidden"
+            >
+              <Menu />
+            </Transition>
+          </MenuContainer>
+        </MenuGroupContainer>
+      </HeaderContent>
+    </HeaderContainer>
   );
 };
 

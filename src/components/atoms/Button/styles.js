@@ -1,59 +1,70 @@
 import styled from "styled-components";
 
-export const EditButton = styled.button`
-  a {
-    display: block;
-    height: 2.5rem;
-    padding: 0 2rem;
-    background-color: var(--clr-acc-primary);
-    color: var(--clr-txt-alt);
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 2.5rem;
+const HeaderButton = styled.button`
+  height: 2.5rem;
+  padding: 0 1.25rem;
+  border: none;
+  background: ${props => props.isOpen ? 'var(--slate-700)' : 'var(--slate-300)'};
+  color: var(--white);
+  font-family: var(--poppins);
+  font-size: 0.85rem;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--slate-500);
+    color: var(--white);
+  }
+
+  &:active {
+    background: var(--slate-700);
+    color: var(--white);
   }
 `;
 
-export const DeleteButton = styled.button`
-  display: block;
-  height: 2.5rem;
-  margin-left: 0.5rem;
-  padding: 0 2rem;
-  background-color: var(--clr-acc-primary);
-  color: var(--clr-txt-alt);
-  font-size: 1rem;
+const ActionButton = styled.button`
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0 1rem;
+  background-color: var(--slate-300);
+  color: var(--white);
+  font-family: var(--roboto);
   font-weight: 300;
+  cursor: pointer;
+  font-size: 0.85rem;
+  line-height: 1.75rem;
+
+  &:hover {
+    background-color: var(--slate-500);
+    color: var(--white);
+  }
+
+  &:active {
+    background-color: var(--slate-700);
+    color: var(--white);
+  }
 `;
 
-export const PDFButton = styled.button`
-  display: block;
-  height: 2.5rem;
-  margin: 2rem auto 0;
-  padding: 0 2rem;
-  background-color: var(--clr-acc-primary);
-  color: var(--clr-txt-alt);
-  font-size: 1rem;
-  font-weight: 300;
-`;
-
-export const LogoutButton = styled.button`
+const DetailsButton = styled.button`
   display: flex;
   align-items: center;
-  gap: 0.25rem;
-  height: 2rem;
-  padding: 0 1rem;
-  background-color: var(--clr-acc-primary);
-  border-radius: 0.25rem;
-  color: var(--clr-txt-alt);
-  font-size: 0.9rem;
-  font-weight: 300;
+  justify-content: center;
+  padding: 0 0.75rem;
+  border: none;
+  background: ${props => props.isOpen ? 'var(--gray-500)' : 'var(--gray-300)'};
+  color: ${props => props.isOpen ? 'var(--white)' : 'var(--gray-900)'};
+  font-family: var(--roboto);
+  font-weight: 500;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--gray-500);
+  }
+
+  &:active {
+    background: var(--gray-500);
+  }
 `;
 
-export const SettingsButton = styled.button`
-  height: 2rem;
-  padding: 0 1rem;
-  background-color: var(--clr-acc-primary);
-  border-radius: 0.25rem;
-  color: var(--clr-txt-alt);
-  font-size: 0.9rem;
-  font-weight: 300;
-`;
+export { HeaderButton, DetailsButton, ActionButton };
