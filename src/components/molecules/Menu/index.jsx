@@ -1,17 +1,30 @@
-import { Link } from "react-router-dom";
-import { Container } from "./styles";
+import styled from "styled-components";
+import { Anchor } from "../../atoms";
+
+const MenuDivider = styled.div`
+  height: 1px;
+  background: #fff;
+`;
 
 const Menu = () => (
-  <Container className={isMenuOpen ? "show" : ""}>
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/create">Criar novo cadastro</Link>
-      </li>
-    </ul>
-  </Container>
+  <ul>
+    <li>
+      <Anchor style='headerMenuLink' path={'/'}>
+        Página inicial
+      </Anchor>
+    </li>
+    <li>
+      <Anchor style='headerMenuLink' path={'/createNewCase'}>
+        Novo caso judicial
+      </Anchor>
+    </li>
+    <li>
+      <MenuDivider></MenuDivider>
+      <Anchor style='headerMenuLink' path={'/login'}>
+        Sair da conta
+      </Anchor>
+    </li>
+  </ul>
 );
 
 export { Menu };

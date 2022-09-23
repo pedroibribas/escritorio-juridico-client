@@ -1,12 +1,33 @@
-const Button = ({ action, path, handler, children }) => {
+import { JSXErrorHandler } from "../JSXErrorHandler";
+import { DetailsButton, ActionButton, HeaderButton } from "./styles";
+
+const Button = ({ action, toggle, handler, container, children }) => {
   switch (action) {
-    case "button":
-      return <button onClick={handler}>{children}</button>
-    case "link":
-      return <Link to={path}>{children}</Link>
-    case "submit":
-      return <button type="submit">Enviar</button>
-  } 
+    case "showMenu":
+      return (
+        <HeaderButton isOpen={toggle} onClick={handler} ref={container}>
+          {children}
+        </HeaderButton>
+      )
+
+    case "showDetails":
+      return (
+        <DetailsButton isOpen={toggle} onClick={handler}>
+          {children}
+        </DetailsButton>
+      )
+
+    case "downloadFile":
+    case "showDialog":
+    case "showForm":
+      return <ActionButton onClick={handler}>{children}</ActionButton>
+
+    case "submitForm":
+      return <ActionButton type="submit">{children}</ActionButton>
+
+    default:
+      return <JSXErrorHandler component='Button' property='action' />
+  }
 };
 
 export { Button };

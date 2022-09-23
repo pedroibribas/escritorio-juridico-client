@@ -1,26 +1,21 @@
-const InputGroup = ({ name, handleChange, value }) => {
-  const label = {
-    fullname: 'Nome',
-    job: 'Profissão',
-    securityNumber: 'CPF nº',
-    rgNumber: 'RG',
-    rgOrigin: 'Órgão emissor',
-    birthdate: 'Data de nascimento',
-    street: 'Endereço',
-    addressNumber: 'Número',
-    cityArea: 'Bairro',
-    city: 'Cidade',
-    postalCode: 'CEP',
-    phone: 'Telefone',
-    email: 'Email',
-    lawsuitNumber: 'Processo Nº'
-  };
-  return (
-    <div>
-      <label htmlFor={name}>{label[name]}</label>
-      <input type="text" name={name} id={name} value={value} onChange={handleChange} />
-    </div>
-  );
-};
+import styled from "styled-components";
 
-export { InputGroup };
+const Input = styled.input`
+  width: ${props => props.width || '100%'};
+  height: 1.5rem;
+  padding-left: 0.5rem;
+  border: 1px solid ${props => props.toggle || 'var(--gray-500)'};
+  border-radius: 0.25rem;
+  background: ${props => props.toggle || 'var(--white)'};
+  color: ${props => props.toggle || 'var(--gray-900)'};
+  font-family: var(--roboto);
+  font-size: 1rem;
+  font-weight: 400;
+
+  &::placeholder {
+    font-family: var(--roboto);
+    font-size: 0.75rem;
+  }
+`;
+
+export { Input };

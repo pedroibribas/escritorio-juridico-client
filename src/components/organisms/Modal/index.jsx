@@ -1,7 +1,7 @@
 import { Button, Overlay } from "../../atoms";
 import { Content } from "./styles";
 
-export const Modal = ({ text, handleClose, handleConfirm }) => (
+const Modal = ({ text, handleClose, handleConfirm }) => (
   <>
     <Overlay handleClick={handleClose} />
     <Content>
