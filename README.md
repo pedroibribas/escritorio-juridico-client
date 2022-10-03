@@ -1,19 +1,21 @@
-# Rotas
+# Documentação
+
+## Rotas
 
 - /login
 - /case/:id
 - /createNewCase
 
-# Fontes
+## Estilos
+
+### Fontes
 
 - Roboto # 300|400|500
 - Poppins # 300|400|600|700
 - Montserrat # 300|400|600|700
 - Source Serif Pro # 300|400|600|700
 
-# Cores
-
-# Página
+## Páginas
 
 - O nome do componente é composto pelo nome do caminho da página e o sufixo **Page**.
 
@@ -39,55 +41,69 @@ const NomeDaPáginaPage = () => (
 )
 ```
 
-# Header
+## Cabeçalho
 
 |-- HEADER # ORGANISM # Header => isOpenMenu
 | |-- MENU # MOLECULE # Menu
 
-# Seções
+## Seções
 
-- O nome do componente é composto por um nome de sua função e o sufixo **Section**.
+- O nome do componente é composto por um nome característico e o sufixo _Section_.
 
-- **Cabeçalho:** O cabeçalho é obrigatório e é o primeiro dos componentes-filhos. Tag `<Heading type="sectionHeading">`.
+- Cabeçalho: O cabeçalho é obrigatório e é o primeiro dos componentes-filhos. Tag `<Heading type="sectionHeading">`.
 
-- **Espaçamentos:** Cada elemento é separado do outro por um `<Container content=""/>` ou por regras de espaçamento nativas ao elemento, como é o caso de Section/Heading/Paragraph.
+- Espaçamentos: Cada elemento é separado do outro por um `<Container content=""/>` ou por regras de espaçamento nativas ao elemento, como é o caso de Section/Heading/Paragraph.
 
-- **Subseção:** Caso o elemento receba um cabeçalho, ele é tratado como _subsection_, tag `<Heading type="subSectionHeading"`.
+- Subseção: Caso o elemento receba um cabeçalho, ele é tratado como _subsection_, tag `<Heading type="subSectionHeading"`.
 
-## LoginPage
+### LoginPage
 
 A LoginPage é o único componente de página que possui a sua seção única, dispensando a criação de um componente individualizado.
 
 |-- SECTION # PAGE # LoginPage
 | |-- FORM # ORGANISM # LoginForm => InputsStates
 
-## HomePage/AllCasesSummarySection
+### HomePage/AllCasesSummarySection
 
 |-- SECTION # ORGANISM # AllCasesSummarySection => cases
 | |-- DISPLAY # ORGANISM # AllCasesDisplay => caseSearchResult
-| | |-- INPUT # MOLECULE # SearchCaseBar
-| | |-- DISPLAY # MOLECULE # CaseSummary
+| | |-- INPUT # MOLECULE # SearchBarDisplay
+| | |-- DISPLAY # MOLECULE # AllCasesSummary
 
-## CreateNewCasePage/CreateNewCaseSection
+### CreateNewCasePage/CreateNewCaseSection
 
 |-- SECTION # ORGANISM # CreateNewCaseSection
 | |-- FORM # ORGANISM # CreateNewCaseForm => InputsStates
 
-## CasePage/CaseLawsuitSection
+### LegalCasePage
+
+```
+LegalCasePage
 
 |-- SECTION ORGANISM CaseLawsuitSection => caseLawsuit
 | | |-- MOLECULE CaseLawsuitDetails
 
-## CasePage/CaseParticipantsSection
-
-|-- SECTION ORGANISM CaseParticipantsSection 'isOpenAddForm'
-| |-- FORM ORGANISM AddParticipantToCaseForm '_inputs_'
-| |-- DISPLAY ORGANISM AllParticipantsDisplay 'participants'
-| | |-- ORGANISM ParticipantDisplay 'isOpenDetails'
+|-- SECTION ORGANISM CaseParticipantsSection => isOpenAddForm
+| |-- FORM ORGANISM AddParticipantToCaseForm => InputsStates
+| |-- DISPLAY ORGANISM AllParticipantsDisplay
+| | |-- ORGANISM ParticipantDisplay => isOpenDetails
 | | | |-- MOLECULE ParticipantSummary
 | | | |-- MOLECULE ParticipantDetails
 
-# Formulários
+|-- SECTION ORGANISM CaseWitnessesSection => isOpenAddForm
+| |-- FORM ORGANISM AddWitnessToCaseForm => InputsStates
+| |-- DISPLAY ORGANISM AllWitnessesDisplay
+| | |-- ORGANISM WitnessDisplay => isOpenDetails
+| | | |-- MOLECULE WitnessSummary
+| | | |-- MOLECULE WitnessDetails
+
+|-- SECTION ORGANISM CaseHistoricSection => isToggle
+| |-- FORM ORGANISM AddHistoricDataForm => { InputsState }
+| |-- DISPLAY ORGANISM HistoricDisplay
+| | |-- MOLECULE HistoricDataDetails
+```
+
+## Formulários
 
 - Os formulários da aplicação são componentes `organisms`.
 - O nome do formulário é composto por `<função do formulário>`+`Form`
@@ -119,7 +135,9 @@ const FunçãoDoFormulárioForm = () => {
 }
 ```
 
-# Atoms
+## Componentes
+
+### Atoms
 
 - Os _Atoms_ são arquivos que contêm componentes de estilo com ou sem componentes JSX simples.
 
@@ -127,13 +145,14 @@ const FunçãoDoFormulárioForm = () => {
 
 - A prop React que deflagra um efeito condicionado a um `toggle` deve receber o nome de `handler`.
 
-## `Button`
+#### `Button`
 
 - O `Button` contêm estilizações para cada tipo de botão e recebe um booleano e handler de click para ativar efeitos na página, se o caso.
 - O padrão de nomenclatura da prop `action` é `<action><Component>`
 - Props:
 
   - `action` = `'showMenu'`
+    | `'logout'`
     | `'showDialog'`
     | `'showDetails'`
     | `'showForm'`
@@ -151,7 +170,10 @@ const FunçãoDoFormulárioForm = () => {
 - O componente de estilo é uma `div` porque o componente `a` já é utilizado pelo componente `<Link>` do React-Router.
 - O padrão de nomenclatura dos valores de `style` é `'<origem>Link'`
 - Props:
-  - `style` &lt;obrigatório&gt; = `'casesSummaryLink'` | `'headerLink'` |`'paragraphLink'` | `'headerMenuLink'`
+  - `styles` &lt;obrigatório&gt; = `'casesSummaryLink'`
+    | `'headerLink'`
+    |`'paragraphLink'`
+    | `'headerMenuLink'`
   - `path` &lt;obrigatório&gt; = `string`
   - `children`
 

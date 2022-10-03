@@ -1,30 +1,37 @@
 import styled from "styled-components";
-import { Anchor } from "../../atoms";
+import { Anchor, Button } from "../../atoms";
 
 const MenuDivider = styled.div`
   height: 1px;
   background: #fff;
 `;
 
-const Menu = () => (
-  <ul>
-    <li>
-      <Anchor style='headerMenuLink' path={'/'}>
-        Página inicial
-      </Anchor>
-    </li>
-    <li>
-      <Anchor style='headerMenuLink' path={'/createNewCase'}>
-        Novo caso judicial
-      </Anchor>
-    </li>
-    <li>
-      <MenuDivider></MenuDivider>
-      <Anchor style='headerMenuLink' path={'/login'}>
-        Sair da conta
-      </Anchor>
-    </li>
-  </ul>
-);
+const Menu = () => {
+  const handleClickLogout = () => {
+    localStorage.removeItem('user');
+    window.location.replace("/login");
+  };
+
+  return (
+    <ul>
+      <li>
+        <Anchor styles='headerMenuLink' path={'/'}>
+          Página inicial
+        </Anchor>
+      </li>
+      <li>
+        <Anchor styles='headerMenuLink' path={'/createNewCase'}>
+          Novo caso judicial
+        </Anchor>
+      </li>
+      <li>
+        <MenuDivider></MenuDivider>
+        <Button action='logout' handler={handleClickLogout}>
+          Sair da conta
+        </Button>
+      </li>
+    </ul>
+  );
+};
 
 export { Menu };

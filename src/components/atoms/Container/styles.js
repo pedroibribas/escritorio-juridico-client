@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
-const MarginTop = styled.div`
+export const MarginTop = styled.div`
   margin-top: ${props => props.mt || '0px'};
 `;
 
-const Row = styled.div`
+export const Row = styled.div`
   display: flex;
   gap: ${props => props.gap || '0px'};
 `;
 
-const CaseLawsuitCard = styled.div`
+export const CaseLawsuitCard = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -21,7 +21,7 @@ const CaseLawsuitCard = styled.div`
   background: var(--pink-300);
 `;
 
-const SearchInputIcon = styled.div`
+export const SearchInputIcon = styled.div`
   display: flex;
   align-items: center;
   height: 2rem;
@@ -36,15 +36,15 @@ const SearchInputIcon = styled.div`
   }
 `;
 
-const ParticipantDisplay = styled.div`
+export const CasePageDisplay = styled.div`
   padding-left: 2rem;
 `;
 
-const ParticipantDetails = styled.div`
+export const CasePageDetails = styled.div`
   width: 700px;
 `;
 
-const LoginForm = styled.div`
+export const LoginForm = styled.div`
   border-radius: 0.5rem;
   padding: 2rem;
   background: #FFF;
@@ -55,7 +55,7 @@ const LoginForm = styled.div`
   }
 `;
 
-const AddParticipantForm = styled.div`
+export const CasePageForm = styled.div`
   width: 700px;
   margin-top: 0.25rem;
   border-radius: 0.25rem;
@@ -66,13 +66,11 @@ const AddParticipantForm = styled.div`
   }
 `;
 
-export {
-  LoginForm,
-  AddParticipantForm,
-  MarginTop,
-  ParticipantDetails,
-  ParticipantDisplay,
-  Row,
-  CaseLawsuitCard,
-  SearchInputIcon
-};
+export const HistoricData = styled.div`
+  padding: 0.25rem;
+  font-family: var(--sourceSerifPro);
+
+  p {
+    margin: 0.25rem 2rem 2rem;
+  }
+`;
