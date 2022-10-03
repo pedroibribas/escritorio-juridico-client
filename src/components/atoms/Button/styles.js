@@ -21,6 +21,23 @@ const HeaderButton = styled.button`
   }
 `;
 
+const HeaderMenuButton = styled.button`
+  display: block;
+  border: none;
+  text-align: left;
+  padding: 0.75rem;
+  background: var(--slate-300);
+  color: var(--white);
+  font-family: var(--poppins);
+  font-size: 0.8rem;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--slate-500);
+    text-decoration: underline;
+  }
+`;
+
 const ActionButton = styled.button`
   border: none;
   border-radius: 0.25rem;
@@ -42,6 +59,19 @@ const ActionButton = styled.button`
     background-color: var(--slate-700);
     color: var(--white);
   }
+
+  &:disabled {
+    background: var(--gray-300);
+    cursor: not-allowed;
+
+    &:hover {
+    background: var(--gray-300);
+    };
+
+    &:active {
+      background: var(--gray-300);
+    };
+  };
 `;
 
 const DetailsButton = styled.button`
@@ -67,4 +97,4 @@ const DetailsButton = styled.button`
   }
 `;
 
-export { HeaderButton, DetailsButton, ActionButton };
+export { HeaderButton, HeaderMenuButton, DetailsButton, ActionButton };

@@ -1,21 +1,24 @@
 import { useState } from "react";
 import { AiFillHome } from "react-icons/ai";
-import useOnClickOutsideRef from "../../../helpers/hooks/useOnClickOutsideRef";
+import { useAuth, useOnClickOutsideRef } from "../../../helpers";
 import { Anchor, Button, Transition } from "../../atoms";
 import { Menu } from "../../molecules";
 import { HeaderContent, HeaderContainer, MenuGroupContainer, MenuContainer } from "./styles";
 
 const Header = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const { user } = useAuth();
 
   const buttonRef = useOnClickOutsideRef(() => setIsOpenMenu(false));
+
+  const username = user.username.toUpperCase();
 
   const handleOpenMenu = () => setIsOpenMenu(!isOpenMenu);
 
   return (
     <HeaderContainer>
       <HeaderContent>
-        <Anchor style='headerLink' path="/">
+        <Anchor styles='headerLink' path="/">
           <AiFillHome />Início
         </Anchor>
         <MenuGroupContainer>
@@ -25,7 +28,7 @@ const Header = () => {
             handler={handleOpenMenu}
             container={buttonRef}
           >
-            pedroibribas@gmail.com
+            {username}
           </Button>
           <MenuContainer>
             <Transition

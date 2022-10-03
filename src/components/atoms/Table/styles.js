@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const HomeCasesSummaryTable = styled.table`
+export const HomeCasesSummaryTable = styled.table`
     width: 1050px;
     border-spacing: 0;
     border: 1px solid var(--gray-300);
@@ -34,10 +34,14 @@ const HomeCasesSummaryTable = styled.table`
     padding: 0 0.5rem;
     border-top: 1px solid var(--gray-300);
     background: var(--white);
+
+    &:nth-child(3) {
+      overflow: hidden;
+    }
   }
 `;
 
-const CasePageSummaryTable = styled.table`
+export const CasePageSummaryTable = styled.table`
   font-family: var(--poppins);
   font-size: 0.9rem;
 
@@ -57,7 +61,7 @@ const CasePageSummaryTable = styled.table`
   }
 `;
 
-const CasePageDetailsTable = styled.table`
+export const CasePageDetailsTable = styled.table`
   border-spacing: 0;
   font-family: var(--sourceSerifPro);
   font-size: 1rem;
@@ -92,4 +96,25 @@ const CasePageDetailsTable = styled.table`
   }
 `;
 
-export { CasePageDetailsTable, CasePageSummaryTable, HomeCasesSummaryTable };
+export const HistoricDataTable = styled.table`
+  border-spacing: 0;
+  border: 1px solid var(--gray-300);
+  font-family: var(--poppins);
+  font-size: 0.9rem;
+
+  th {
+    background: #FFF;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  td {
+    width: 700px;
+    padding: 0 0.75rem;
+
+    &:first-child {
+      font-weight: bold;
+      padding: 0; 
+    }
+  }
+`;

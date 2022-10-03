@@ -1,18 +1,17 @@
-import styled from "styled-components";
-
-const Container = styled.footer`
-  background-color: var(--gray-700);
-`;
-
-const Content = styled.footer`
-  padding: 2rem;
-`;
+import { Container, Content } from "./styles";
 
 const Footer = () => {
   return (
     <Container>
       <Content>
-        {/* VERSION */}
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="#top">Topo</a>
+          </li>
+        </ul>
       </Content>
     </Container>
   )

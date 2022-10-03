@@ -10,10 +10,15 @@ const HeaderContent = styled.div`
   max-width: var(--max-w-base);
   height: 4.5rem;
   margin: 0 auto;
+  padding: 0 1rem;
 `;
 
 const MenuGroupContainer = styled.div`
   line-height: 4.5rem; //align button to center
+
+  button {
+    width: 100%;
+  }
 `;
 
 const MenuContainer = styled.div`

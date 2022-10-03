@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { JSXErrorHandler } from "../JSXErrorHandler";
 import { CasesSummaryLink, HeaderLink, HeaderMenuLink, ParagraphLink } from "./styles";
 
-const Anchor = ({ style, path, children }) => {
-  switch (style) {
+const Anchor = ({ styles, path, children }) => {
+  switch (styles) {
     case "headerLink":
       return (
         <HeaderLink>

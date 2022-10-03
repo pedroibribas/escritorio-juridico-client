@@ -1,47 +1,30 @@
 import {
-  AddParticipantForm,
+  CasePageForm,
   CaseLawsuitCard,
   LoginForm,
   MarginTop,
-  ParticipantDetails,
-  ParticipantDisplay,
+  CasePageDetails,
+  CasePageDisplay,
   Row,
-  SearchInputIcon
+  SearchInputIcon,
+  HistoricData,
 } from './styles';
 
 const Container = ({ content, mt, gap, children }) => {
-  switch (content) {
-    case 'any':
-      return <MarginTop mt={mt}>{children}</MarginTop>
+  const containers = {
+    any: MarginTop,
+    row: Row,
+    searchInputIconContent: SearchInputIcon,
+    loginFormContent: LoginForm,
+    casePageFormContent: CasePageForm,
+    casePageDetailsContent: CasePageDetails,
+    casePageDisplayContent: CasePageDisplay,
+    caseLawsuitCardContent: CaseLawsuitCard,
+    historicData: HistoricData,
+  };
 
-    case 'row':
-      return <Row gap={gap}>{children}</Row>
-
-    case 'searchInputIconContent':
-      return <SearchInputIcon>{children}</SearchInputIcon>
-
-    case 'loginFormContent':
-      return <LoginForm>{children}</LoginForm>
-
-    case 'addParticipantFormContent':
-      return <AddParticipantForm>{children}</AddParticipantForm>
-
-    case 'participantDetailsContent':
-      return <ParticipantDetails>{children}</ParticipantDetails>
-
-    case 'participantDisplayContent':
-      return <ParticipantDisplay>{children}</ParticipantDisplay>
-
-    case 'caseLawsuitCardContent':
-      return <CaseLawsuitCard>{children}</CaseLawsuitCard>
-
-    default:
-      return (
-        <mark>
-          <i>Container: React prop 'content' is missing</i>
-        </mark>
-      )
-  }
+  const Component = containers[content];
+  return <Component mt={mt} gap={gap}>{children}</Component>
 }
 
-export { Container }
+export { Container };

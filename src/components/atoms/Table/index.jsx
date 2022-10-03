@@ -1,20 +1,19 @@
-import { JSXErrorHandler } from "../JSXErrorHandler";
-import { CasePageDetailsTable, CasePageSummaryTable, HomeCasesSummaryTable } from "./styles";
+import {
+  CasePageDetailsTable,
+  CasePageSummaryTable,
+  HomeCasesSummaryTable
+} from './styles';
 
 const Table = ({ content, children }) => {
-  switch (content) {
-    case 'homeCasesSummary':
-      return <HomeCasesSummaryTable>{children}</HomeCasesSummaryTable>
-
-    case 'casePageSummary':
-      return <CasePageSummaryTable>{children}</CasePageSummaryTable>
-
-    case 'casePageDetails':
-      return <CasePageDetailsTable>{children}</CasePageDetailsTable>
-
-    default:
-      return <JSXErrorHandler component="Table" property="content" />
+  const tables = {
+    homeCasesSummary: HomeCasesSummaryTable,
+    casePageSummary: CasePageSummaryTable,
+    casePageDetails: CasePageDetailsTable
   }
-};
 
-export { Table };
+  const Component = tables[content]
+
+  return <Component>{children}</Component>
+}
+
+export { Table }
