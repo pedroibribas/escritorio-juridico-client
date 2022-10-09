@@ -1,6 +1,5 @@
-import { savePDF } from "../../../../helpers";
-import { Button, Container, Heading, Paragraph, Section } from "../../../atoms";
-import { CaseLawsuitDetails } from "../../../molecules";
+import { Heading, Section } from "../../../atoms";
+import { CaseLawsuitDetails, PDFButton } from "../../../molecules";
 
 const CaseLawsuitSection = () => {
   return (
@@ -9,17 +8,7 @@ const CaseLawsuitSection = () => {
         Dados do Processo
       </Heading>
       <CaseLawsuitDetails />
-      <Container content="caseLawsuitCardContent">
-        <Paragraph>
-          Faça o download da versão PDF do cadastro:
-        </Paragraph>
-        <Button
-          action="downloadFile"
-          handler={savePDF}
-        >
-          Download PDF
-        </Button>
-      </Container>
+      <PDFButton />
     </Section>
   );
 };

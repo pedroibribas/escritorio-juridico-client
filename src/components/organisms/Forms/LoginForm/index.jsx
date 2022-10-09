@@ -48,7 +48,7 @@ const LoginForm = () => {
         />
       </FormGroup>
       <FormGroup>
-        <Button action="submitForm">
+        <Button type="submit" action="submitForm">
           Autenticar
         </Button>
       </FormGroup>
