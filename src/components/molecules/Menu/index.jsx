@@ -20,7 +20,7 @@ const Menu = () => {
         </Anchor>
       </li>
       <li>
-        <Anchor styles='headerMenuLink' path={'/createNewCase'}>
+        <Anchor styles='headerMenuLink' path={'/createLegalCase'}>
           Novo caso judicial
         </Anchor>
       </li>

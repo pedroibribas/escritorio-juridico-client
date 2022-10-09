@@ -5,7 +5,7 @@ import {
   HeaderMenuButton
 } from './styles';
 
-const Button = ({ action, type = "button", toggle, handler, children }) => {
+const Button = ({ action, type = "button", toggle, handler, container, children }) => {
   const buttons = {
     showMenu: HeaderButton,
     logout: HeaderMenuButton,
@@ -19,7 +19,7 @@ const Button = ({ action, type = "button", toggle, handler, children }) => {
   const Component = buttons[action];
 
   return (
-    <Component type={type} onClick={handler} isOpen={toggle}>
+    <Component type={type} onClick={handler} isOpen={toggle} ref={container}>
       {children}
     </Component>
   );
