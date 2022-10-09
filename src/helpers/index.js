@@ -12,4 +12,3 @@ export * from './hooks/useToggle';
 export * from './utils/intlDateFormat';
 export * from './utils/namesRowFormat';
 export * from './utils/regexFormat';
-export * from './utils/savePDF';

@@ -304,7 +304,7 @@ const AddParticipantToCaseForm = () => {
         />
       </FormGroup>
       <FormGroup>
-        <Button action="submitForm">Cadastrar</Button>
+        <Button type="submit" action="submitForm">Cadastrar</Button>
       </FormGroup>
     </form>
   );
