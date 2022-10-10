@@ -1,11 +1,5 @@
 # Documentação
 
-## Rotas
-
-- /login
-- /case/:id
-- /createNewCase
-
 ## Estilos
 
 ### Fontes

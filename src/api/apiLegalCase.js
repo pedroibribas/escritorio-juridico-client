@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const axiosLegalCase = axios.create({
-  baseURL: "/api/legalCases"
+  baseURL: process.env.REACT_APP_API_URL + "/api/legalCases"
 });
 
 axiosLegalCase.interceptors.request.use(config => {
