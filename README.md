@@ -8,7 +8,7 @@
 
 ```
 email: test@admin.com
-senha: admin 1234
+senha: admin1234
 ```
 
 ## Regras de Estilização
