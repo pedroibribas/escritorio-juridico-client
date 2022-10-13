@@ -26,8 +26,8 @@ const AllCasesSummary = ({ caseSearchResult }) => {
               </td>
               <td>
                 <Anchor
-                  styles="casesSummaryLink"
-                  path={'/legalCase/' + legalCase._id}
+                  to={'/legalCase/' + legalCase._id}
+                  styles="summary"
                 >
                   Detalhes
                 </Anchor>

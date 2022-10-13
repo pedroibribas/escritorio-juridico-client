@@ -10,7 +10,7 @@ const CaseWitnessesSection = () => {
       <Heading type="sectionHeading">
         Testemunhas
       </Heading>
-      <Button action="showForm" toggle={isOpenAddForm} handler={handleOpenForm}>
+      <Button onClick={handleOpenForm} styles="primary" toggle={isOpenAddForm}>
         {
           isOpenAddForm
             ? 'Fechar formulário'

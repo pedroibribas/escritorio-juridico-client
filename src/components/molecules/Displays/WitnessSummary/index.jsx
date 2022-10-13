@@ -8,9 +8,9 @@ const WitnessSummary = ({ witness, toggle, handler }) => (
         <td>{witness.name}</td>
         <td>
           <Button
-            action="showDetails"
-            isOpen={toggle}
-            handler={handler}
+            onClick={handler}
+            styles="details"
+            toggle={toggle}
           >
             {toggle ? 'recolher' : 'expandir'}
           </Button>

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { JSXErrorHandler } from "../JSXErrorHandler";
 
 const HeightTransition = styled.div`
   height: ${props => props.isOpen ? props.size : '0px'};
@@ -8,17 +7,24 @@ const HeightTransition = styled.div`
 `;
 
 const Transition = ({ property, toggle, size, overflowY, children }) => {
-  switch (property) {
-    case 'heightTransition':
-      return (
-        <HeightTransition isOpen={toggle} size={size} overflowY={overflowY}>
-          {children}
-        </HeightTransition>
-      );
+  const transitions = {
+    heightTransition: HeightTransition,
+    fallback: HeightTransition,
+  };
 
-    default:
-      return <JSXErrorHandler component='Transition' property='property' />;
-  }
+  const key = transitions[property] ? property : "fallback";
+
+  const Component = transitions[key];
+
+  return (
+    <Component
+      isOpen={toggle}
+      size={size}
+      overflowY={overflowY}
+    >
+      {children}
+    </Component>
+  );
 };
 
 export { Transition };

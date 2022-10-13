@@ -1,39 +1,25 @@
 import { Link } from "react-router-dom";
-import { JSXErrorHandler } from "../JSXErrorHandler";
-import { CasesSummaryLink, HeaderLink, HeaderMenuLink, ParagraphLink } from "./styles";
+import { Header, Menu, Summary } from "./styles";
 
-const Anchor = ({ styles, path, children }) => {
-  switch (styles) {
-    case "headerLink":
-      return (
-        <HeaderLink>
-          <Link to={path}>{children}</Link>
-        </HeaderLink>
-      );
-    case "headerMenuLink":
-      return (
-        <HeaderMenuLink>
-          <Link to={path}>{children}</Link>
-        </HeaderMenuLink>
-      );
+const Anchor = ({ styles, children, ...rest }) => {
+  const anchors = {
+    header: Header,
+    menu: Menu,
+    summary: Summary,
+    fallback: Summary,
+  };
 
-    case "casesSummaryLink":
-      return (
-        <CasesSummaryLink>
-          <Link to={path}>{children}</Link>
-        </CasesSummaryLink>
-      );
+  const key = anchors[styles] ? styles : "fallback";
 
-    case "paragraphLink":
-      return (
-        <ParagraphLink>
-          <Link to={path}>{children}</Link>
-        </ParagraphLink>
-      );
+  const Component = anchors[key];
 
-    default:
-      return <JSXErrorHandler component='Anchor' property='style' />
-  }
+  return (
+    <Link {...rest}>
+      <Component>
+        {children}
+      </Component>
+    </Link>
+  );
 };
 
 export { Anchor };
