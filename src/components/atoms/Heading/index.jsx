@@ -1,32 +1,18 @@
-import { JSXErrorHandler } from "../JSXErrorHandler";
-import { Font, PageHeading, SectionHeading, SubSectionHeading } from "./styles";
+import { PageHeading, SectionHeading, SubSectionHeading } from "./styles";
 
 const Heading = ({ type, children }) => {
-  switch (type) {
-    case 'pageHeading':
-      return (
-        <PageHeading>
-          <Font>{children}</Font>
-        </PageHeading>
-      )
+  const headings = {
+    pageHeading: PageHeading,
+    sectionHeading: SectionHeading,
+    subSectionHeading: SubSectionHeading,
+    fallback: SubSectionHeading,
+  };
 
-    case 'sectionHeading':
-      return (
-        <SectionHeading>
-          <Font>{children}</Font>
-        </SectionHeading>
-      )
+  const key = headings[type] ? type : "fallback";
 
-    case 'subSectionHeading':
-      return (
-        <SubSectionHeading>
-          <Font>{children}</Font>
-        </SubSectionHeading>
-      )
+  const Component = headings[key];
 
-    default:
-      return <JSXErrorHandler component='Heading' property='type' />
-  }
+  return <Component>{children}</Component>
 };
 
 export { Heading };

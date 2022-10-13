@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import { addParticipantAPIHandler } from "../../../../api/services/legalCase";
 import { regexFormat } from "../../../../helpers";
-import { Button, FlexBlock, Input, Label, Select } from "../../../atoms";
+import { Button, Container, Input, Label, Select } from "../../../atoms";
 import { FormGroup } from "../../../molecules";
 
 const AddParticipantToCaseForm = () => {
@@ -145,7 +145,7 @@ const AddParticipantToCaseForm = () => {
           onChange={handleChangeSecurityNumber}
         />
       </FormGroup>
-      <FlexBlock gap="1rem">
+      <Container content="row" gap="1rem">
         <FormGroup>
           <Label htmlFor="generalRegister">RG</Label>
           <Input
@@ -166,8 +166,8 @@ const AddParticipantToCaseForm = () => {
             onChange={handleChangeRegisterOrigin}
           />
         </FormGroup>
-      </FlexBlock>
-      <FlexBlock gap="1rem">
+      </Container>
+      <Container content="row" gap="1rem">
         <FormGroup>
           <Label htmlFor="birthdate">Data de nascimento</Label>
           <Input
@@ -190,7 +190,7 @@ const AddParticipantToCaseForm = () => {
             onChange={handleChangeAge}
           />
         </FormGroup>
-      </FlexBlock>
+      </Container>
       <FormGroup>
         <Label htmlFor="address">Endereço</Label>
         <Input
@@ -304,7 +304,7 @@ const AddParticipantToCaseForm = () => {
         />
       </FormGroup>
       <FormGroup>
-        <Button type="submit" action="submitForm">Cadastrar</Button>
+        <Button type="submit" styles="primary">Cadastrar</Button>
       </FormGroup>
     </form>
   );

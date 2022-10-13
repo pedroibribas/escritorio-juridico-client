@@ -11,9 +11,9 @@ const CaseHistoricSection = () => {
         Histórico
       </Heading>
       <Button
-        action="showForm"
+        onClick={handleOpenForm}
+        styles="primary"
         toggle={isOpenAddForm}
-        handler={handleOpenForm}
       >
         {isOpenAddForm ? 'Fechar formulário' : 'Criar novo registro'}
       </Button>

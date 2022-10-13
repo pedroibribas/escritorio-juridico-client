@@ -1,25 +1,24 @@
-import {
-  DetailsButton,
-  ActionButton,
-  HeaderButton,
-  HeaderMenuButton
-} from './styles';
+import { Details, Header, Menu, Primary } from './styles';
 
-const Button = ({ action, type = "button", toggle, handler, container, children }) => {
+const Button = ({ styles, toggle, container, children, ...rest }) => {
   const buttons = {
-    showMenu: HeaderButton,
-    logout: HeaderMenuButton,
-    showDetails: DetailsButton,
-    downloadFile: ActionButton,
-    showDialog: ActionButton,
-    showForm: ActionButton,
-    submitForm: ActionButton
-  }
+    primary: Primary,
+    header: Header,
+    menu: Menu,
+    details: Details,
+    fallback: Primary,
+  };
 
-  const Component = buttons[action];
+  const key = buttons[styles] ? styles : "fallback";
+
+  const Component = buttons[key];
 
   return (
-    <Component type={type} onClick={handler} isOpen={toggle} ref={container}>
+    <Component
+      isOpen={toggle}
+      ref={container}
+      {...rest}
+    >
       {children}
     </Component>
   );

@@ -36,7 +36,7 @@ const AddHistoricDataForm = () => {
         />
       </FormGroup>
       <FormGroup>
-        <Button action="submitForm" type="submit">
+        <Button type="submit" styles="primary">
           Cadastrar
         </Button>
       </FormGroup>
