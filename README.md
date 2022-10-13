@@ -1,240 +1,101 @@
 # Documentação
 
-## Estilos
+- Status: [Online](ribasadv.netlify.app/)
+- Hospedagem: [Netlify](https://app.netlify.com/sites/ribasadv/overview)
+- Servidor: [API Escritório Jurídico Ribas](https://api-escritorio-juridico-ribas.up.railway.app)
 
-### Fontes
+## Usuário Teste
 
-- Roboto # 300|400|500
-- Poppins # 300|400|600|700
-- Montserrat # 300|400|600|700
-- Source Serif Pro # 300|400|600|700
+```
+email: test@admin.com
+senha: admin 1234
+```
 
-## Páginas
+## Regras de Estilização
 
-- O nome do componente é composto pelo nome do caminho da página e o sufixo **Page**.
+### Componente Page
 
-- O conteúdo JSX do componente _page_ é inserido dentro de um componente _template_.
+- Descrição: O componente `page` é o componente que apresenta a UI completa da página.
 
-- **Templates:**
+- Local do componente: `./src/components/pages`
 
-  - **PageTemplate:** modelo para as páginas em geral da aplicação que contêm cabeçalho e rodapé.
-  - **AuthPageTemplate:** modelo para a página de autenticação do usuário. Ela não contêm cabeçalho e rodapé.
+- Nome do componente: `[CaminhoDaPágina]Page`.
 
-- O topo do JSX recebe um componente `<Heading type="pageHeading">`, que recebe o título da página.
-
-- Cada conteúdo apresentado ao usuário corresponde a uma seção da página, que não deve ser expresso no código da página, mas deve ser um componente _organism_ próprio.
+- Formatação:
 
 ```tsx
-const NomeDaPáginaPage = () => (
-  <PageTemplate>
+// obs: a arrow function usa menos linhas de código
+// se existir apenas o JSX nele
+const ComponentePage = () => (
+  <ComponenteTemplate>
     <Heading type="pageHeading">Título</Heading>
-    <SectionA />
-    <SectionB />
-    <SectionC />
-  </PageTemplate>
+    <FirstSection />
+    <SecondSection />
+    <ThirdSection />
+  </ComponenteTemplate>
 )
 ```
 
-## Cabeçalho
+- Cada conteúdo apresentado ao usuário é uma seção da página. A seção deve ser um componente _organism_ próprio.
 
-|-- HEADER # ORGANISM # Header => isOpenMenu
-| |-- MENU # MOLECULE # Menu
+- Templates:
+  - Local do componente: `./src/components/temapltes`
+  - Nome do componente: `[Nome]PageTemplate`.
+  - `<PageTemplate/>`: template para páginas em geral do app. Contêm cabeçalho e rodapé.
+  - `<AuthPageTemplate/>`: template para página de autenticação. Não tem cabeçalho e rodapé.
+  - O cabeçalho da página - Header - está em `./src/components/organisms/Header`
+  - O roda-pé da página - Footer - está em `./src/components/organisms/Footer`
+  - Tanto o cabeçalho quanto o rodapé são renderizados exclusivamente no template.
 
-## Seções
+### Seções da Página
 
-- O nome do componente é composto por um nome característico e o sufixo _Section_.
+- Local do componente: `./src/components/organisms/Sections`.
 
-- Cabeçalho: O cabeçalho é obrigatório e é o primeiro dos componentes-filhos. Tag `<Heading type="sectionHeading">`.
+- Nome do componente: `[Nome]Section`.
 
-- Espaçamentos: Cada elemento é separado do outro por um `<Container content=""/>` ou por regras de espaçamento nativas ao elemento, como é o caso de Section/Heading/Paragraph.
+- Estrutura interna:
 
-- Subseção: Caso o elemento receba um cabeçalho, ele é tratado como _subsection_, tag `<Heading type="subSectionHeading"`.
+  - O primeiro componente-filho é obrigatoriamente um átomo `<Heading type="sectionHeading"/>`.
+  - O cabeçalho do elemento é um `<Heading type="subSectionHeading"`.
+  - Cada elemento é embalado pelo átomo `<Container/>` para fins de espaçamento, caso o elemento não possua regras nativas, como `<Heading/>` ou `<Paragraph/>`.
 
-### LoginPage
+- Displays:
 
-A LoginPage é o único componente de página que possui a sua seção única, dispensando a criação de um componente individualizado.
+  - Local do componente: `./src/components/organisms/Displays`.
+  - Nome do componente: `[Conteúdo]Display`.
+  - Os displays são componentes cuja função é apresentar dados ao usuário.
 
-|-- SECTION # PAGE # LoginPage
-| |-- FORM # ORGANISM # LoginForm => InputsStates
+- Formulários:
 
-### HomePage/AllCasesSummarySection
-
-|-- SECTION # ORGANISM # AllCasesSummarySection => cases
-| |-- DISPLAY # ORGANISM # AllCasesDisplay => caseSearchResult
-| | |-- INPUT # MOLECULE # SearchBarDisplay
-| | |-- DISPLAY # MOLECULE # AllCasesSummary
-
-### CreateNewCasePage/CreateNewCaseSection
-
-|-- SECTION # ORGANISM # CreateNewCaseSection
-| |-- FORM # ORGANISM # CreateNewCaseForm => InputsStates
-
-### LegalCasePage
-
-```
-LegalCasePage
-
-|-- SECTION ORGANISM CaseLawsuitSection => caseLawsuit
-| | |-- MOLECULE CaseLawsuitDetails
-
-|-- SECTION ORGANISM CaseParticipantsSection => isOpenAddForm
-| |-- FORM ORGANISM AddParticipantToCaseForm => InputsStates
-| |-- DISPLAY ORGANISM AllParticipantsDisplay
-| | |-- ORGANISM ParticipantDisplay => isOpenDetails
-| | | |-- MOLECULE ParticipantSummary
-| | | |-- MOLECULE ParticipantDetails
-
-|-- SECTION ORGANISM CaseWitnessesSection => isOpenAddForm
-| |-- FORM ORGANISM AddWitnessToCaseForm => InputsStates
-| |-- DISPLAY ORGANISM AllWitnessesDisplay
-| | |-- ORGANISM WitnessDisplay => isOpenDetails
-| | | |-- MOLECULE WitnessSummary
-| | | |-- MOLECULE WitnessDetails
-
-|-- SECTION ORGANISM CaseHistoricSection => isToggle
-| |-- FORM ORGANISM AddHistoricDataForm => { InputsState }
-| |-- DISPLAY ORGANISM HistoricDisplay
-| | |-- MOLECULE HistoricDataDetails
-```
-
-## Formulários
-
-- Os formulários da aplicação são componentes `organisms`.
-- O nome do formulário é composto por `<função do formulário>`+`Form`
-- Na parte lógica do formulário, existem em regra _states_, _change handlers_ e um _submit handler_.
-  - O padrão de nomenclatura dos _states_ é o nome do Input respectivo.
-  - O padrão de nomenclatura dos _change handlers_ é `handleChange`+`<nome do estado>`.
-  - O padrão de nomenclatura dos _submit handlers_ é `handleSubmit`.
-- Na parte do JSX, utiliza-se os átomos _styled-components_ `<FormGroup>` para o distanciamento para pares Label-Input e o botão de envio, `<Label>` para a estilização da Label, e `Input` para a estilização do Input. O botão de envio é um átomo `<Button action="">`.
-- Veja-se o modelo:
+  - Local do componente: `./src/components/organisms/Forms`.
+  - Nome do componente: `[Função]Form`.
+  - Na parte lógica do formulário, existem em regra _states_, _change handlers_ e um _submit handler_.
+    - O padrão de nomenclatura dos _states_ é o nome do Input respectivo.
+    - O padrão de nomenclatura dos _change handlers_ é `handleChange[NomeDoState]`.
+    - O padrão de nomenclatura dos _submit handlers_ é `handleSubmit`.
+  - Formatação:
 
 ```tsx
-const FunçãoDoFormulárioForm = () => {
+const Componente = () => {
   // # STATES
   // # CHANGE HANDLERS
   // # SUBMIT HANDLER
   return (
     <form onSubmit={handleSubmit}>
       <FormGroup>
-        <Label>Nome do Input</Label>
-        <Input
-        //atributos
-        />
+        <Label>NomeDoInput</Label>
+        <Input /*atributos*/ />
       </FormGroup>
       <FormGroup>
-        <Button action="">Nome do Input</Button>
+        <Button /*submit*/>AçãoDoUsuário</Button>
       </FormGroup>
     </form>
   )
 }
 ```
 
-## Componentes
+### Componente Atom
 
-### Atoms
-
-- Os _Atoms_ são arquivos que contêm componentes de estilo com ou sem componentes JSX simples.
-
-- A prop React que monitora a mudança de um valor boleano deve receber o nome de `toggle` (i.e., dispositivo).
-
-- A prop React que deflagra um efeito condicionado a um `toggle` deve receber o nome de `handler`.
-
-#### `Button`
-
-- O `Button` contêm estilizações para cada tipo de botão e recebe um booleano e handler de click para ativar efeitos na página, se o caso.
-- O padrão de nomenclatura da prop `action` é `<action><Component>`
-- Props:
-
-  - `action` = `'showMenu'`
-    | `'logout'`
-    | `'showDialog'`
-    | `'showDetails'`
-    | `'showForm'`
-    | `'submitForm'`
-    | `'downloadFile'`
-  - `toggle` = `boolean`
-  - `handler` = `function`
-  - `container` = `HTMLElement`
-  - `children`
-
-## `Anchor
-
-- O `Anchor` oferece estilos para links. O nome Anchor se deve porque Link é um componente do pacote React-Router.
-- Cada estilo é especificado pela prop `style`, isto é, o estilo específico da origem em que é utilizado.
-- O componente de estilo é uma `div` porque o componente `a` já é utilizado pelo componente `<Link>` do React-Router.
-- O padrão de nomenclatura dos valores de `style` é `'<origem>Link'`
-- Props:
-  - `styles` &lt;obrigatório&gt; = `'casesSummaryLink'`
-    | `'headerLink'`
-    |`'paragraphLink'`
-    | `'headerMenuLink'`
-  - `path` &lt;obrigatório&gt; = `string`
-  - `children`
-
-## `Section`
-
-- O `Section` se extende pela largura toda da página. Ele define a cor do background e controla a largura do conteúdo interior e o seu posicionamento.
-- A `color` padrão é `var(--white)`.
-- O `size` padrão é `var(--max-w-base)`
-- Props: `color: string`,`isScreenHeight: boleano`,`size: string`,`children`.
-
-## `Heading`
-
-- O `Heading` contêm as propriedades de fonte dos três principais títulos da aplicação e o seu posicionamento.
-- O posicionamento do elemento é lidado aqui para evitar poluir o JSX.
-- O estilo `pageHeading` é o título da **page**. O estilo `sectionHeading` é o título da **section**. O `subSectionHeading` é título na **section**.
-- Props: `type: pageHeading | sectionHeading | subSectionHeading`,`children`.
-
-## `Paragraph`
-
-- O `Paragraph` contêm as propriedades de fonte dos parágrafos.
-- O posicionamento do elemento é lidado aqui para evitar poluir o JSX.
-- Props: `mt`: `string`.
-
-## `Container`
-
-- O `Container` oferece estilizações para cada tipo de contêiner especial.
-- Os contêineres dos elementos do `Header` estão em sua própria pasta de arquivos.
-- Os componentes Heading, Paragraph, FormGroup, Section **não podem receber Container**. Obs.: Para a Table se tornou permitido.
-- O `content='any'` é o contêiner padrão. Sua função é aplicar margem superior nos elementos dentro da seção. Por essa razão, ele recebe uma margem personalizada via props. Os `content` personalizados recebem estilizações específicas.
-- O padrão de nomenclatura da prop `content` é `'<component>Content'`
-- Props:
-  - `content` = `'any'` <br>
-    | `'row'` <br>
-    | `'caseLawsuitCardContent'` <br>
-    | `'searchInputIconContent'` <br>
-    | `'loginFormContent'` <br>
-    | `'addParticipantFormContent'` <br>
-    | `'participantDetailsContent'` <br>
-    | `'participantDisplayContent'`
-  - `mt` = `string`
-  - `gap` = `string`
-  - `children`
-
-## `FormGroup`
-
-- O `FormGroup` oferece estilização para o par Label-Input dentro de um formulário. O par embalado pelo `FormGroup` recebe margem de topo.
-
-## `Table`
-
-- O `Table` fornece estilos para tabelas.
-- A tabela é selecinada pela prop `content`, isto é, o conteúdo da tabela.
-- Tabelas de sumário recebem o nome `summary` e tabelas de detalhes recebem o nome `details`.
-- A nomenclatura da prop `content` é: |`<página>`OU`<página>`+`<conteúdo>`|+|`<Summary>`/`<Details>`|.
-- Props:
-  - `content` = `'homeCasesSummary'` <br>
-    | `'casePageSummary'` <br>
-    | `'casePageDetails'` <br>
-  - `children`
-
-## `Transition`
-
-- O `Transition` oferece transições animadas.
-- Qualquer estilização que não seja relativa à transição deve ser colocada através de outro componente, como por exemplo o `Container`.
-- O padrão de nomenclatura da prop `property` é `'<property>Transition'`
-- Props:
-  - `property` = `'heightTransition'`
-  - `toggle` = `boolean`
-  - `size` = `string`
-  - `overflowY` = `string`
-  - `children`
+- Glossário:
+  - `toggle`: prop React que monitora a mudança de valor de um boleano.
+  - `handler`: prop React que deflagra um efeito condicionado a um `toggle`.
