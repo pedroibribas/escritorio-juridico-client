@@ -15,18 +15,21 @@ const Menu = () => {
   return (
     <ul>
       <li>
-        <Anchor styles='headerMenuLink' path={'/'}>
+        <Anchor styles='menu' to={'/'}>
           Página inicial
         </Anchor>
       </li>
       <li>
-        <Anchor styles='headerMenuLink' path={'/createLegalCase'}>
+        <Anchor styles='menu' to={'/createLegalCase'}>
           Novo caso judicial
         </Anchor>
       </li>
       <li>
         <MenuDivider></MenuDivider>
-        <Button action='logout' handler={handleClickLogout}>
+        <Button
+          onClick={handleClickLogout}
+          styles='menu'
+        >
           Sair da conta
         </Button>
       </li>

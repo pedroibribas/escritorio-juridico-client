@@ -25,10 +25,7 @@ const PDFButton = () => {
       <Paragraph>
         Faça o download da versão PDF do cadastro:
       </Paragraph>
-      <Button
-        action="downloadFile"
-        handler={handleClick}
-      >
+      <Button onClick={handleClick} styles="download">
         Download PDF
       </Button>
     </Container>

@@ -18,14 +18,14 @@ const Header = () => {
   return (
     <HeaderContainer>
       <HeaderContent>
-        <Anchor styles='headerLink' path="/">
+        <Anchor styles='header' to="/">
           <AiFillHome />Início
         </Anchor>
         <MenuGroupContainer>
           <Button
-            action='showMenu'
+            onClick={handleOpenMenu}
+            styles='header'
             toggle={isOpenMenu}
-            handler={handleOpenMenu}
             container={buttonRef}
           >
             {username}

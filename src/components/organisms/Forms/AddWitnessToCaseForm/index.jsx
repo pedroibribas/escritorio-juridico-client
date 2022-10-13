@@ -155,7 +155,7 @@ const AddWitnessToCaseForm = () => {
         />
       </FormGroup>
       <FormGroup>
-        <Button type="submit" action="submitForm">Cadastrar</Button>
+        <Button type="submit" styles="primary">Cadastrar</Button>
       </FormGroup>
     </form>
   );
