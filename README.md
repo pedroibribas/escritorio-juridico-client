@@ -1,6 +1,6 @@
 # Documentação
 
-- Status: [Online](ribasadv.netlify.app/)
+- Status: [Online](http://ribasadv.netlify.app/)
 - Hospedagem: [Netlify](https://app.netlify.com/sites/ribasadv/overview)
 - Servidor: [API Escritório Jurídico Ribas](https://api-escritorio-juridico-ribas.up.railway.app)
 

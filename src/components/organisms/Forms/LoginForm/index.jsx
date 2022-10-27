@@ -18,7 +18,7 @@ const LoginForm = () => {
 
     loginUserAPIHandler(data)
       .then(res => {
-        localStorage.setItem('user', JSON.stringify(res));
+        localStorage.setItem('lawOfficeAuth', JSON.stringify(res));
         window.location.replace("/");
       })
       .catch(err => toast.error(err.response.data.message));

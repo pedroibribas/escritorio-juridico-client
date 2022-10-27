@@ -2,7 +2,6 @@ export * from './Header';
 export * from './Footer';
 
 // # Sections
-export * from './Sections/AllCasesSummarySection';
 export * from './Sections/CaseLawsuitSection';
 export * from './Sections/CaseParticipantsSection';
 export * from './Sections/CaseWitnessesSection';

@@ -1,5 +1,5 @@
-import { Heading } from "../../atoms";
-import { AllCasesSummarySection } from "../../organisms";
+import { Heading, Section } from "../../atoms";
+import { AllCasesDisplay } from "../../organisms";
 import { PageTemplate } from "../../templates";
 
 const HomePage = () => (
@@ -7,7 +7,13 @@ const HomePage = () => (
     <Heading type='pageHeading'>
       Início
     </Heading>
-    <AllCasesSummarySection />
+
+    <Section>
+      <Heading type="sectionHeading">
+        Casos Cadastrados
+      </Heading>
+      <AllCasesDisplay />
+    </Section>
   </PageTemplate>
 )
 

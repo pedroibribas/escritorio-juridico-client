@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Header = styled.a`
+export const Header = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,7 +29,7 @@ export const Header = styled.a`
     }
 `;
 
-export const Menu = styled.a`
+export const Menu = styled.div`
     display: block;
     padding: 0.75rem;
     background: var(--slate-300);
@@ -43,7 +43,7 @@ export const Menu = styled.a`
     }
 `;
 
-export const Summary = styled.a`
+export const Summary = styled.div`
     display: flex;
     align-items: center;
     padding: 0.1rem 0.5rem;
