@@ -1,6 +1,6 @@
 # Documentação
 
-- Status: [Online](ribasadv.netlify.app/)
+- Status: [Online](http://ribasadv.netlify.app/)
 - Hospedagem: [Netlify](https://app.netlify.com/sites/ribasadv/overview)
 - Servidor: [API Escritório Jurídico Ribas](https://api-escritorio-juridico-ribas.up.railway.app)
 
@@ -8,7 +8,7 @@
 
 ```
 email: test@admin.com
-senha: admin 1234
+senha: admin1234
 ```
 
 ## Regras de Estilização

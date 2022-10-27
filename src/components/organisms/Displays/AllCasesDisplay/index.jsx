@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
-import useAllLegalCases from "../../../../helpers/hooks/useAllLegalCases";
+
 import { Container, Heading, Paragraph } from "../../../atoms";
 import { AllCasesSummary } from "../../../molecules";
 import { SearchBarDisplay } from "../../";
 
+import useAllLegalCases from "../../../../helpers/hooks/useAllLegalCases";
+
 const AllCasesDisplay = () => {
   const [caseSearchResult, setCaseSearchResult] = useState([]);
+
   const legalCases = useAllLegalCases();
+
   const hasCases = legalCases.length > 0;
 
   useEffect(() => {

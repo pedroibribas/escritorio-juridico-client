@@ -27,4 +27,5 @@ const MenuContainer = styled.div`
   line-height: 1rem;
 `;
 
-export { HeaderContainer, HeaderContent, MenuGroupContainer, MenuContainer };
+const S = { HeaderContainer, HeaderContent, MenuGroupContainer, MenuContainer };
+export default S;
