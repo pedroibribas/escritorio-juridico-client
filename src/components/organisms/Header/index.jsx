@@ -1,49 +1,54 @@
 import { useState } from "react";
 import { AiFillHome } from "react-icons/ai";
+
 import { useAuth, useOnClickOutsideRef } from "../../../helpers";
 import { Anchor, Button, Transition } from "../../atoms";
 import { Menu } from "../../molecules";
-import { HeaderContent, HeaderContainer, MenuGroupContainer, MenuContainer } from "./styles";
+
+import S from "./styles";
 
 const Header = () => {
-  const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const { user } = useAuth();
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const buttonRef = useOnClickOutsideRef(() => setIsOpenMenu(false));
+	const { user } = useAuth();
+	const username = user.username;
 
-  const username = user.username.toUpperCase();
+	const buttonRef = useOnClickOutsideRef(
+		() => setIsMenuOpen(false)
+	);
 
-  const handleOpenMenu = () => setIsOpenMenu(!isOpenMenu);
+	const handleButtonClick =
+		() => setIsMenuOpen(!isMenuOpen);
 
-  return (
-    <HeaderContainer>
-      <HeaderContent>
-        <Anchor styles='header' to="/">
-          <AiFillHome />Início
-        </Anchor>
-        <MenuGroupContainer>
-          <Button
-            onClick={handleOpenMenu}
-            styles='header'
-            toggle={isOpenMenu}
-            container={buttonRef}
-          >
-            {username}
-          </Button>
-          <MenuContainer>
-            <Transition
-              property="heightTransition"
-              toggle={isOpenMenu}
-              size="150px"
-              overflowY="hidden"
-            >
-              <Menu />
-            </Transition>
-          </MenuContainer>
-        </MenuGroupContainer>
-      </HeaderContent>
-    </HeaderContainer>
-  );
+	return (
+		<S.HeaderContainer>
+			<S.HeaderContent>
+				<Anchor styles='header' to="/">
+					<AiFillHome />Início
+				</Anchor>
+				<S.MenuGroupContainer>
+					<Button
+						onClick={handleButtonClick}
+						styles='header'
+						toggle={isMenuOpen}
+						container={buttonRef}
+					>
+						{username}
+					</Button>
+					<S.MenuContainer>
+						<Transition
+							property="heightTransition"
+							toggle={isMenuOpen}
+							size="150px"
+							overflowY="hidden"
+						>
+							<Menu />
+						</Transition>
+					</S.MenuContainer>
+				</S.MenuGroupContainer>
+			</S.HeaderContent>
+		</S.HeaderContainer>
+	);
 };
 
 export { Header };

@@ -1,24 +1,9 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 
-const user = JSON.parse(localStorage.getItem('user'));
+const session = localStorage.getItem('lawOfficeAuth');
 
-const INITIAL_STATE = {
-  user: user || null
+export const defaultUser = {
+	user: session ? JSON.parse(session) : null
 };
 
-const AuthContext = createContext(INITIAL_STATE);
-
-const AuthProvider = ({ children }) => {
-  const [state, setState] = useState(INITIAL_STATE.user);
-  return (
-    <AuthContext.Provider value={{
-      user: state,
-      setUser: setState
-    }}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
-
-export { AuthProvider };
-export default AuthContext;
+export const AuthContext = createContext(defaultUser);

@@ -1,8 +1,9 @@
-import { intlDateFormat, namesRowFormat } from "../../../../helpers";
 import { Anchor, Table } from "../../../atoms";
+import { formatNamesList, intlDateFormat } from "../../../../helpers";
 
 const AllCasesSummary = ({ caseSearchResult }) => {
   const hasCases = caseSearchResult.length > 0;
+
   return (
     <Table content="homeCasesSummary">
       <thead>
@@ -20,9 +21,7 @@ const AllCasesSummary = ({ caseSearchResult }) => {
               <td>{intlDateFormat(legalCase.createdAt)}</td>
               <td>{legalCase.lawsuitNumber}</td>
               <td>
-                {namesRowFormat(legalCase.participants).map(
-                  name => name
-                )}
+                {formatNamesList(legalCase.participants)}
               </td>
               <td>
                 <Anchor
